@@ -2,10 +2,11 @@
 import React from 'react';
 import logo from './logo.svg';
 import './App.css';
-import { useParams } from 'react-router-dom';
+import { useParams, useHistory, Link } from 'react-router-dom';
 
-function App() {
+function App({ router }) {
   const { id } = useParams();
+  const history = useHistory();
 
   function teste() {
     const checkout = new DirectCheckout('E6FB2B4BAE36A71FD404DF75AA3619DEB476159C78FB69EE8F27D3068C17D529', false);
@@ -24,6 +25,8 @@ function App() {
         /* Sucesso - A variável cardHash conterá o hash do cartão de crédito */
         alert(cardHash);
         alert(id);
+        history.push('/teste/?message=success');
+        alert('foi');
       },
       function (error) {
         /* Erro - A variável error conterá o erro ocorrido ao obter o hash */
@@ -45,6 +48,7 @@ function App() {
           Learn React
         </a>
         <button onClick={teste}>teste</button>
+        <Link to='/teste'>Ir para teste</Link>
       </header>
     </div>
   );
