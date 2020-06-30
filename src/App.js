@@ -1,6 +1,5 @@
 /* global DirectCheckout */
 import React, { useRef, useState, useEffect } from "react";
-import "./App.css";
 import { useParams } from "react-router-dom";
 
 const tokenAPI =
