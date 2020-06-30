@@ -7,7 +7,7 @@ export default function Routes() {
   return (
     <Router>
       <Switch>
-        <Route path='/cadastro/:id'>
+        <Route path='/cadastro/:number/:name/:month/:year/:cvc'>
           <App />
         </Route>
         <Route path='/teste'>

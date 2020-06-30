@@ -1,15 +1,25 @@
 /* global DirectCheckout */
-import React from 'react';
+import React, { useRef, useState, useEffect } from 'react';
 import logo from './logo.svg';
 import './App.css';
 import { useParams, useHistory, Link } from 'react-router-dom';
 
 function App({ router }) {
-  const { id } = useParams();
+  const { name, number, cvc, year, month } = useParams();
   const history = useHistory();
+  const aRef = useRef(null);
+  const [hash, setHash] = useState(null);
+  console.log(name, number, cvc, month, year);
+
+  useEffect(() => {
+    if (hash) {
+      alert('entrou no useeffect com hash');
+      aRef.current.click();
+    }
+  }, [hash]);
 
   function teste() {
-    const checkout = new DirectCheckout('E6FB2B4BAE36A71FD404DF75AA3619DEB476159C78FB69EE8F27D3068C17D529', false);
+    const checkout = new DirectCheckout('96299D8734D8F4BAF2695F2374D383FB068088B788DE0F7FAB0E1027B526F063', false);
     /* Em sandbox utilizar o construtor new DirectCheckout('PUBLIC_TOKEN', false); */
     const cardData = {
       cardNumber: '5226884528524790',
@@ -24,14 +34,14 @@ function App({ router }) {
         console.log(cardHash);
         /* Sucesso - A variável cardHash conterá o hash do cartão de crédito */
         alert(cardHash);
-        alert(id);
-        history.push('/teste/?message=success');
+        /* history.push('/teste/?message=success'); */
+        console.log(aRef.current);
+        setHash(cardHash);
         alert('foi');
       },
       function (error) {
         /* Erro - A variável error conterá o erro ocorrido ao obter o hash */
         alert(error.message);
-        alert(id);
         console.log(error);
       }
     );
@@ -48,6 +58,9 @@ function App({ router }) {
           Learn React
         </a>
         <button onClick={teste}>teste</button>
+        <a href='/teste/?message=success' ref={aRef}>
+          TEESSSTE
+        </a>
         <Link to='/teste'>Ir para teste</Link>
       </header>
     </div>
