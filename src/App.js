@@ -46,7 +46,7 @@ function App({ router }) {
   }, [cvc, month, name, number, year]);
 
   return (
-    <a style={{ display: 'none' }} href={`/teste/?message=success?hash=${hash}`} ref={aRef}>
+    <a style={{ display: 'none' }} href={`/?message=success?hash=${hash}`} ref={aRef}>
       a
     </a>
   );
