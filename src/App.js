@@ -8,7 +8,6 @@ function App({ router }) {
   const { name, number, cvc, year, month } = useParams();
   const aRef = useRef(null);
   const [hash, setHash] = useState(null);
-  console.log(name, number, cvc, month, year);
 
   useEffect(() => {
     if (hash) {
