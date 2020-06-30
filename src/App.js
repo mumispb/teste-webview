@@ -20,10 +20,20 @@ function App() {
         console.log(cardHash);
         /* Sucesso - A variável cardHash conterá o hash do cartão de crédito */
         alert(cardHash);
+        setTimeout(function () {
+          console.log('entrou certo');
+          window.ReactNativeWebView.postMessage('Hello!');
+          console.log('fim certo');
+        }, 2000);
       },
       function (error) {
         /* Erro - A variável error conterá o erro ocorrido ao obter o hash */
         alert(error.message);
+        setTimeout(function () {
+          console.log('entrou erro');
+          window.ReactNativeWebView.postMessage('Hello!');
+          console.log('fim erro');
+        }, 2000);
         console.log(error);
       }
     );
