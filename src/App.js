@@ -2,8 +2,11 @@
 import React from 'react';
 import logo from './logo.svg';
 import './App.css';
+import { useParams } from 'react-router-dom';
 
 function App() {
+  const { id } = useParams();
+
   function teste() {
     const checkout = new DirectCheckout('E6FB2B4BAE36A71FD404DF75AA3619DEB476159C78FB69EE8F27D3068C17D529', false);
     /* Em sandbox utilizar o construtor new DirectCheckout('PUBLIC_TOKEN', false); */
@@ -20,20 +23,12 @@ function App() {
         console.log(cardHash);
         /* Sucesso - A variável cardHash conterá o hash do cartão de crédito */
         alert(cardHash);
-        setTimeout(function () {
-          console.log('entrou certo');
-          window.ReactNativeWebView.postMessage('Hello!');
-          console.log('fim certo');
-        }, 2000);
+        alert(id);
       },
       function (error) {
         /* Erro - A variável error conterá o erro ocorrido ao obter o hash */
         alert(error.message);
-        setTimeout(function () {
-          console.log('entrou erro');
-          window.ReactNativeWebView.postMessage('Hello!');
-          console.log('fim erro');
-        }, 2000);
+        alert(id);
         console.log(error);
       }
     );
