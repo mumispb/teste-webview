@@ -1,8 +1,7 @@
 /* global DirectCheckout */
 import React, { useRef, useState, useEffect } from "react";
-import logo from "./logo.svg";
 import "./App.css";
-import { useParams, useHistory, Link } from "react-router-dom";
+import { useParams } from "react-router-dom";
 
 const tokenAPI =
   "E6FB2B4BAE36A71FD404DF75AA3619DEB476159C78FB69EE8F27D3068C17D529";
@@ -33,7 +32,6 @@ function App({ router }) {
       checkout.getCardHash(
         cardData,
         function (cardHash) {
-          console.log(cardHash);
           /* Sucesso - A variável cardHash conterá o hash do cartão de crédito */
           /* history.push('/teste/?message=success'); */
           setHash(cardHash);
@@ -48,15 +46,13 @@ function App({ router }) {
   }, [cvc, month, name, number, year]);
 
   return (
-    <>
-      <a
-        style={{ display: "none" }}
-        href={`/teste/?message=success?hash=${hash}`}
-        ref={aRef}
-      >
-        TEESSSTE
-      </a>
-    </>
+    <a
+      style={{ display: "none" }}
+      href={`/teste/?message=success?hash=${hash}`}
+      ref={aRef}
+    >
+      a
+    </a>
   );
 }
 
