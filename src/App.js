@@ -1,9 +1,8 @@
 /* global DirectCheckout */
-import React, { useRef, useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
+import React, { useRef, useState, useEffect } from 'react';
+import { useParams } from 'react-router-dom';
 
-const tokenAPI =
-  "E6FB2B4BAE36A71FD404DF75AA3619DEB476159C78FB69EE8F27D3068C17D529";
+const tokenAPI = 'E6FB2B4BAE36A71FD404DF75AA3619DEB476159C78FB69EE8F27D3068C17D529';
 
 function App({ router }) {
   const { name, number, cvc, year, month } = useParams();
@@ -31,12 +30,14 @@ function App({ router }) {
       checkout.getCardHash(
         cardData,
         function (cardHash) {
+          alert(cardHash);
           /* Sucesso - A variável cardHash conterá o hash do cartão de crédito */
           /* history.push('/teste/?message=success'); */
           setHash(cardHash);
         },
         function (error) {
           /* Erro - A variável error conterá o erro ocorrido ao obter o hash */
+          alert(error.message);
           console.log(error);
         }
       );
@@ -45,11 +46,7 @@ function App({ router }) {
   }, [cvc, month, name, number, year]);
 
   return (
-    <a
-      style={{ display: "none" }}
-      href={`/teste/?message=success?hash=${hash}`}
-      ref={aRef}
-    >
+    <a style={{ display: 'none' }} href={`/teste/?message=success?hash=${hash}`} ref={aRef}>
       a
     </a>
   );
