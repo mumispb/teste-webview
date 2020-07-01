@@ -35,14 +35,12 @@ function App({ router }) {
       checkout.getCardHash(
         cardData,
         function (cardHash) {
-          alert(cardHash);
           /* Sucesso - A variável cardHash conterá o hash do cartão de crédito */
           /* history.push('/teste/?message=success'); */
           setHash(cardHash);
         },
         function (error) {
           /* Erro - A variável error conterá o erro ocorrido ao obter o hash */
-          alert(error.message);
           console.log(error);
         }
       );
