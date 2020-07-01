@@ -3,7 +3,7 @@ import React, { useRef, useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 
 const paymentToken =
-  process.env.NODE_ENV === 'production'
+  process.env.REACT_APP_API_KEY === 'production'
     ? '0CFCAF8141F4C89967CD3AA391D21ACA1689CBF1F05E05F7400F26E33E3BF0A787F33CB843F88E57'
     : 'E6FB2B4BAE36A71FD404DF75AA3619DEB476159C78FB69EE8F27D3068C17D529';
 
@@ -21,7 +21,7 @@ function App({ router }) {
   useEffect(() => {
     function GenerateHash() {
       const checkout =
-        process.env.NODE_ENV === 'production'
+        process.env.REACT_APP_API_KEY === 'production'
           ? new DirectCheckout(paymentToken)
           : new DirectCheckout(paymentToken, false);
       /* Em sandbox utilizar o construtor new DirectCheckout('PUBLIC_TOKEN', false); */
