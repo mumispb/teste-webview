@@ -1,11 +1,12 @@
+/*global FB*/
 import React from 'react';
 
 // import { Container } from './styles';
 
 function App() {
-  function handleShare() {
+  async function handleShare() {
     alert('entrou na funcao');
-    window.FB.ui(
+    await FB.ui(
       {
         display: 'popup',
         method: 'share',
@@ -26,6 +27,7 @@ function App() {
       }
     );
     alert('parou 2');
+    console.log('dsaddsadas');
   }
 
   return (
