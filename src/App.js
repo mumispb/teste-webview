@@ -1,57 +1,35 @@
-/* global DirectCheckout */
-import React, { useRef, useState, useEffect } from 'react';
-import { useParams } from 'react-router-dom';
+import React from 'react';
 
-const paymentToken =
-  process.env.REACT_APP_API_KEY === 'production'
-    ? '0CFCAF8141F4C89967CD3AA391D21ACA1689CBF1F05E05F7400F26E33E3BF0A787F33CB843F88E57'
-    : 'E6FB2B4BAE36A71FD404DF75AA3619DEB476159C78FB69EE8F27D3068C17D529';
+// import { Container } from './styles';
 
-function App({ router }) {
-  const { name, number, cvc, year, month } = useParams();
-  const aRef = useRef(null);
-  const [hash, setHash] = useState(null);
-
-  useEffect(() => {
-    if (hash) {
-      aRef.current.click();
-    }
-  }, [hash]);
-
-  useEffect(() => {
-    function GenerateHash() {
-      const checkout =
-        process.env.REACT_APP_API_KEY === 'production'
-          ? new DirectCheckout(paymentToken)
-          : new DirectCheckout(paymentToken, false);
-      /* Em sandbox utilizar o construtor new DirectCheckout('PUBLIC_TOKEN', false); */
-      const cardData = {
-        cardNumber: number,
-        holderName: name,
-        securityCode: cvc,
-        expirationMonth: month,
-        expirationYear: year,
-      };
-      checkout.getCardHash(
-        cardData,
-        function (cardHash) {
-          /* Sucesso - A variável cardHash conterá o hash do cartão de crédito */
-          /* history.push('/teste/?message=success'); */
-          setHash(cardHash);
-        },
-        function (error) {
-          /* Erro - A variável error conterá o erro ocorrido ao obter o hash */
-          console.log(error);
+function App() {
+  function handleShare() {
+    alert('entrou na funcao');
+    window.FB.ui(
+      {
+        display: 'popup',
+        method: 'share',
+        href: 'https://developers.facebook.com/docs/',
+      },
+      function (response) {
+        if (response === undefined) {
+          alert('Fechou a caixa de diálogo. Falha no compartilhamento');
+          console.log('Fechou a caixa de diálogo. Falha no compartilhamento');
+        } else if (response.length === 0) {
+          console.log('Compartilhado com sucesso');
+          alert('Compartilhado com sucesso');
+        } else {
+          console.log('outro');
+          alert('erro');
         }
-      );
-    }
-    GenerateHash();
-  }, [cvc, month, name, number, year]);
+      }
+    );
+  }
 
   return (
-    <a style={{ display: 'none' }} href={`/?message=success?hash=${hash}`} ref={aRef}>
-      a
-    </a>
+    <button type='button' onClick={handleShare} style={{ padding: 10, backgroundColor: 'blue', color: 'white' }}>
+      Teste de compartilhamento fb
+    </button>
   );
 }
 
