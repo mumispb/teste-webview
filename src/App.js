@@ -25,6 +25,8 @@ function App() {
         } else {
           console.log('outro');
           alert('erro');
+          alert(response);
+          alert(typeof response);
         }
       }
     );
