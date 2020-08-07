@@ -13,7 +13,6 @@ function App() {
         href: 'https://developers.facebook.com/docs/',
       },
       function (response) {
-        alert('parou 1');
         if (response === undefined) {
           alert('Fechou a caixa de diálogo. Falha no compartilhamento');
           console.log('Fechou a caixa de diálogo. Falha no compartilhamento');
@@ -26,8 +25,7 @@ function App() {
         }
       }
     );
-    alert('parou 2');
-    console.log('dsaddsadas');
+    alert('fim');
   }
 
   return (
