@@ -13,6 +13,9 @@ function App() {
         href: 'https://developers.facebook.com/docs/',
       },
       function (response) {
+        console.log(response);
+        alert(response);
+        alert(typeof response);
         if (response === undefined) {
           alert('Fechou a caixa de diálogo. Falha no compartilhamento');
           console.log('Fechou a caixa de diálogo. Falha no compartilhamento');
