@@ -20,6 +20,7 @@ function App() {
           alert('Fechou a caixa de diálogo. Falha no compartilhamento');
           console.log('Fechou a caixa de diálogo. Falha no compartilhamento');
         } else if (response.length === 0) {
+          alert(response);
           console.log('Compartilhado com sucesso');
           alert('Compartilhado com sucesso');
         } else {
