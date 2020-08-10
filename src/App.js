@@ -14,7 +14,7 @@ function App() {
       },
       function (response) {
         console.log('resposta');
-        alert(response);
+        alert('resposta');
         alert(typeof response);
         if (response === undefined) {
           alert('Fechou a caixa de diálogo. Falha no compartilhamento');
