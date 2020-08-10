@@ -13,14 +13,12 @@ function App() {
         href: 'https://developers.facebook.com/docs/',
       },
       function (response) {
-        console.log('resposta');
         alert('resposta');
         alert(typeof response);
         if (response === undefined) {
           alert('Fechou a caixa de diálogo. Falha no compartilhamento');
           console.log('Fechou a caixa de diálogo. Falha no compartilhamento');
         } else if (response.length === 0) {
-          alert(response);
           console.log('Compartilhado com sucesso');
           alert('Compartilhado com sucesso');
         } else {
