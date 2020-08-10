@@ -13,7 +13,7 @@ function App() {
         href: 'https://developers.facebook.com/docs/',
       },
       function (response) {
-        console.log(response);
+        console.log('resposta');
         alert(response);
         alert(typeof response);
         if (response === undefined) {
